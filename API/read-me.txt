@@ -1,0 +1,5 @@
+1. Download the Xampp / Wampp Server and Postman to test the API.
+
+2. Enter the following URL in the Postman.
+
+3. Enter the JSON given in the sample.json file in the postman.

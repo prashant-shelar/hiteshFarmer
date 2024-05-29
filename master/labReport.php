@@ -9,7 +9,7 @@ $listobj = new getList();
    <!-- Main content -->
    <section class="content mt-4">
       <div class="container-fluid">
-      
+
 
          <div id="labAdd">
             <form class="form-horizontal" id="add_form">
@@ -89,19 +89,24 @@ $listobj = new getList();
                            <label for="kk"> अहवाल </label>
                            <div class="form-group">
 
-                              <input type="radio" class="form-check-input" id="kk" name="kk" value="soil"
+                              <input type="radio" class="form-check-input"  name="kk" value="soil"
                                  onclick="setReport()" checked>
                               <label class="form-check-label mr-4" for="माती">
                                  मृदा विश्लेषण अहवाल
                               </label>
 
-                              <input type="radio" class="form-check-input" id="ll" name="kk" value="water"
+                              <input type="radio" class="form-check-input" name="kk" value="water"
                                  onclick="setReport()">
                               <label class="form-check-label" for="जल">
                                  जल विश्लेषण अहवाल
                               </label>
                            </div>
 
+                        </div>
+
+                        <div>
+                           <input type="hidden" id="ll" name="ll" value="<?php echo date('d/m/y'); ?>"/>
+                           <input type="hidden" id="pppp" name="pppp"  value="<?php echo $_SESSION['user_id']; ?>"/>
                         </div>
 
 
@@ -220,7 +225,17 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="uu"> मुख्य अन्नद्रव्ये</label>
+                                       <label> मुख्य अन्नद्रव्ये</label>
+                                    </div>
+                                 </td>
+
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <div class="form-group">
+                                       <label for="uu"> उपलब्ध नत्र
+                                          Available Nitrogen (N)
+                                       </label>
                                     </div>
                                  </td>
                                  <td>
@@ -239,12 +254,12 @@ $listobj = new getList();
                                     </div>
                                  </td>
                               </tr>
+
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="ww"> उपलब्ध नत्र
-                                          Available Nitrogen (N)
-                                       </label>
+                                       <label for="ww">उपलब्ध स्फुरद
+                                          Available Phosphorus (P) </label>
                                     </div>
                                  </td>
                                  <td>
@@ -263,12 +278,11 @@ $listobj = new getList();
                                     </div>
                                  </td>
                               </tr>
-
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="yy">उपलब्ध स्फुरद
-                                          Available Phosphorus (P) </label>
+                                       <label for="yy">उपलब्ध पालाश
+                                          Available Potash (K) </label>
                                     </div>
                                  </td>
                                  <td>
@@ -289,10 +303,14 @@ $listobj = new getList();
                               </tr>
                               <tr>
                                  <td>
-                                    <div class="form-group">
-                                       <label for="aaa">उपलब्ध पालाश
-                                          Available Potash (K) </label>
-                                    </div>
+                                    <label>सुक्ष्म अन्नद्रव्ये</label>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <label>
+                                       उपलब्ध लोह Available Iron (Fe)
+                                    </label>
                                  </td>
                                  <td>
                                     <div class="form-group">
@@ -307,6 +325,74 @@ $listobj = new getList();
                                  <td>
                                     <div class="form-group">
                                        <input type="text" class="form-control" id="bbb" name="bbb" placeholder="" />
+                                    </div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <label>
+                                       उपलब्ध जस्त Available Zinc (Zn)
+                                    </label>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <select class="form-control" id="ccc" name="ccc">
+                                          <option value="">Select Action Type</option>
+                                          <option>डेसिसायमन/मि.</option>
+                                          <option>शेकडा</option>
+                                          <option>कि.ग्र/हेक्टर</option>
+                                       </select>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" id="ddd" name="ddd" placeholder="" />
+                                    </div>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td>
+                                    <label>
+                                       उपलब्ध तांबे Available Copper (Cu)
+                                    </label>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <select class="form-control" id="eee" name="eee">
+                                          <option value="">Select Action Type</option>
+                                          <option>डेसिसायमन/मि.</option>
+                                          <option>शेकडा</option>
+                                          <option>कि.ग्र/हेक्टर</option>
+                                       </select>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" id="fff" name="fff" placeholder="" />
+                                    </div>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td>
+                                    <label>
+                                       उपलब्ध मंगल Available Maganese(Mn)
+                                    </label>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <select class="form-control" id="ggg" name="ggg">
+                                          <option value="">Select Action Type</option>
+                                          <option>डेसिसायमन/मि.</option>
+                                          <option>शेकडा</option>
+                                          <option>कि.ग्र/हेक्टर</option>
+                                       </select>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" id="hhh" name="hhh" placeholder="" />
                                     </div>
                                  </td>
                               </tr>
@@ -336,72 +422,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="ccc"> पाण्यातील घटक</label>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <div class="form-group">
-                                       <select class="form-control" id="ccc" name="ccc">
-                                          <option value="">Select Action Type</option>
-                                          <option>डे.सी./ मीटर</option>
-                                          <option>मि.इ./ लिटर</option>
-                                       </select>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <div class="form-group">
-                                       <input type="text" class="form-control" id="ddd" name="ddd" placeholder="" />
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <div class="form-group">
-                                       <label for="eee"> सामु ( pH )</label>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <div class="form-group">
-                                       <select class="form-control" id="eee" name="eee">
-                                          <option value="">Select Action Type</option>
-                                          <option>डे.सी./ मीटर</option>
-                                          <option>मि.इ./ लिटर</option>
-                                       </select>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <div class="form-group">
-                                       <input type="text" class="form-control" id="fff" name="fff" placeholder="" />
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <div class="form-group">
-                                       <label for="ggg"> विद्युत वाहकता / क्षारता ( EC )
-                                       </label>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <div class="form-group">
-                                       <select class="form-control" id="ggg" name="ggg">
-                                          <option value="">Select Action Type</option>
-                                          <option>डे.सी./ मीटर</option>
-                                          <option>मि.इ./ लिटर</option>
-                                       </select>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <div class="form-group">
-                                       <input type="text" class="form-control" id="hhh" name="hhh" placeholder="" />
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <div class="form-group">
-                                       <label for="iii"> कॅटायन्स
-                                       </label>
+                                       <label for="iii"> पाण्यातील घटक</label>
                                     </div>
                                  </td>
                                  <td>
@@ -422,7 +443,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="kkk"> कॅल्शियम ( Ca )</label>
+                                       <label for="kkk"> सामु ( pH )</label>
                                     </div>
                                  </td>
                                  <td>
@@ -443,7 +464,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="mmm"> मग्नेशीयम ( Mg )
+                                       <label for="mmm"> विद्युत वाहकता / क्षारता ( EC )
                                        </label>
                                     </div>
                                  </td>
@@ -462,11 +483,11 @@ $listobj = new getList();
                                     </div>
                                  </td>
                               </tr>
-
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="ooo">सोडियम ( Na ) </label>
+                                       <label for="ooo"> कॅटायन्स
+                                       </label>
                                     </div>
                                  </td>
                                  <td>
@@ -487,7 +508,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="qqq">पोटॅशियम ( K ) </label>
+                                       <label for="qqq"> कॅल्शियम ( Ca )</label>
                                     </div>
                                  </td>
                                  <td>
@@ -507,15 +528,9 @@ $listobj = new getList();
                               </tr>
                               <tr>
                                  <td>
-                                    <label>अँनियन्स</label>
-                                 </td>
-                                 <td></td>
-                                 <td></td>
-                              </tr>
-                              <tr>
-                                 <td>
                                     <div class="form-group">
-                                       <label for="sss">कार्बोनेट्स ( Co3 )</label>
+                                       <label for="sss"> मग्नेशीयम ( Mg )
+                                       </label>
                                     </div>
                                  </td>
                                  <td>
@@ -533,11 +548,11 @@ $listobj = new getList();
                                     </div>
                                  </td>
                               </tr>
+
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="uuu"> बायकार्बोनेट्स ( HCo3 )
-                                       </label>
+                                       <label for="uuu">सोडियम ( Na ) </label>
                                     </div>
                                  </td>
                                  <td>
@@ -558,8 +573,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="www"> क्लोराईटस ( Cl )
-                                       </label>
+                                       <label for="www">पोटॅशियम ( K ) </label>
                                     </div>
                                  </td>
                                  <td>
@@ -579,8 +593,15 @@ $listobj = new getList();
                               </tr>
                               <tr>
                                  <td>
+                                    <label>अँनियन्स</label>
+                                 </td>
+                                 <td></td>
+                                 <td></td>
+                              </tr>
+                              <tr>
+                                 <td>
                                     <div class="form-group">
-                                       <label for="yyy">सल्फेट ( So4 )</label>
+                                       <label for="yyy">कार्बोनेट्स ( Co3 )</label>
                                     </div>
                                  </td>
                                  <td>
@@ -601,7 +622,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="aaaa">सोडियम शोषण गुणांक ( SAR )
+                                       <label for="aaaa"> बायकार्बोनेट्स ( HCo3 )
                                        </label>
                                     </div>
                                  </td>
@@ -620,11 +641,11 @@ $listobj = new getList();
                                     </div>
                                  </td>
                               </tr>
-
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="cccc">अवशेषात्मक सोडियम कार्बोनेट ( RSC ) </label>
+                                       <label for="cccc"> क्लोराईटस ( Cl )
+                                       </label>
                                     </div>
                                  </td>
                                  <td>
@@ -645,7 +666,7 @@ $listobj = new getList();
                               <tr>
                                  <td>
                                     <div class="form-group">
-                                       <label for="eeee">कॅल्शियम ते मग्नेशियम गुणांक (Ca:Mg) </label>
+                                       <label for="eeee">सल्फेट ( So4 )</label>
                                     </div>
                                  </td>
                                  <td>
@@ -660,6 +681,71 @@ $listobj = new getList();
                                  <td>
                                     <div class="form-group">
                                        <input type="text" class="form-control" id="ffff" name="ffff" placeholder="" />
+                                    </div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <div class="form-group">
+                                       <label for="gggg">सोडियम शोषण गुणांक ( SAR )
+                                       </label>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <select class="form-control" id="gggg" name="gggg">
+                                          <option value="">Select Action Type</option>
+                                          <option>डे.सी./ मीटर</option>
+                                          <option>मि.इ./ लिटर</option>
+                                       </select>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" id="hhhh" name="hhhh" placeholder="" />
+                                    </div>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td>
+                                    <div class="form-group">
+                                       <label for="iiii">अवशेषात्मक सोडियम कार्बोनेट ( RSC ) </label>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <select class="form-control" id="iiii" name="iiii">
+                                          <option value="">Select Action Type</option>
+                                          <option>डे.सी./ मीटर</option>
+                                          <option>मि.इ./ लिटर</option>
+                                       </select>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" id="jjjj" name="jjjj" placeholder="" />
+                                    </div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <div class="form-group">
+                                       <label for="kkkk">कॅल्शियम ते मग्नेशियम गुणांक (Ca:Mg) </label>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <select class="form-control" id="kkkk" name="kkkk">
+                                          <option value="">Select Action Type</option>
+                                          <option>डे.सी./ मीटर</option>
+                                          <option>मि.इ./ लिटर</option>
+                                       </select>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" id="llll" name="llll" placeholder="" />
                                     </div>
                                  </td>
                               </tr>
@@ -702,7 +788,7 @@ $listobj = new getList();
       </div>
 
 
-      <div id="generateReport">
+      <div id="generateSoilReport">
          <!-- Header-start -->
          <div id="headerReport" style="border:solid 1px black;padding:10px;">
 
@@ -710,40 +796,40 @@ $listobj = new getList();
                <div>
                   <span><b>जावक क्र. : </b></span><span id="heading-1"> ६३०</span>
                </div>
-               <div>
-                  <span><b>दिनांक : </b></span><span id="heading-2">१७/०३/२०२३</span>
+               <div class="mt-2">
+                  <span><b>दिनांक : </b></span><span id="heading-2">--/--/----</span>
                </div>
             </div>
             <div style="display: flex;justify-content: space-between;">
-               <div>
+               <div class="mt-1">
                   <span><b>प्रयोगशाळा संदर्भ क्र. : </b></span><span id="heading-3"> ००१०</span>
                </div>
-               <div>
+               <div class="mt-2">
                   <span><b>शेतक-याचे नाव : </b></span><span id="heading-4">आधार खंडू देवरे</span>
                </div>
             </div>
 
             <div style="display: flex;justify-content: space-between;">
-               <div>
+               <div class="mt-2">
                   <span><b>गाव : </b></span><span id="heading-5">मानके</span>
                </div>
-               <div>
+               <div class="mt-2">
                   <span><b>तालुका : </b></span><span id="heading-6">मालेगाव</span>
                </div>
-               <div>
+               <div class="mt-2">
                   <span><b>जिल्हा : </b></span><span id="heading-7">नाशिक</span>
                </div>
             </div>
 
             <div style="display: flex;justify-content: space-between;">
 
-               <div>
+               <div class="mt-2">
                   <span><b>सर्व्हे / गट क्रमांक : </b></span><span id="heading-8">७८/२/२</span>
                </div>
-               <div class="mt-1">
+               <div class="mt-2">
                   <span><b>पिक : </b></span><span id="heading-9">काकडी</span>
                </div>
-               <div>
+               <div class="mt-2">
                   <span><b>क्षेत्र : </b></span><span id="heading-10">०.४० हेक्टर</span>
                </div>
             </div>
@@ -818,7 +904,7 @@ $listobj = new getList();
                   <td style="border:1px solid black;">०.५० पेक्षा कमी : अत्यंत कमी, ०.५१ ते २.५० : कमी, २.५१ ते ५.०० :
                      मध्यम, ५.०१ ते १०.०० : थोडे जास्त, १०.०१ ते च्या पुढे : अत्यंत जास्त / पिकास हानीकारक.</td>
                </tr>
-               <tr style="border:1px solid black; height:auto;">
+               <tr style="border:1px solid black; height:35px;">
                   <td style="border:1px solid black;"><b>मुख्य अन्नद्रव्ये </b></td>
                </tr>
                <tr style="border:1px solid black; height:auto;">
@@ -851,7 +937,7 @@ $listobj = new getList();
                   <td style="border:1px solid black;">१०० पेक्षा कमी : अत्यंत कमी, १०१ ते १५० : कमी, १५१ ते २००: मध्यम,
                      २०१ ते २५० : थोडे जास्त,२५१ ते ३०० : जास्त, ३०० पेक्षा जास्त : अत्यंत जास्त .</td>
                </tr>
-               <tr>
+               <tr style="height:35px;">
                   <td>
                      <b>सुक्ष्म अन्नद्रव्ये</b>
                   </td>
@@ -904,8 +990,191 @@ $listobj = new getList();
             </tbody>
          </table>
 
-         <div style="text-align: center;margin-top: 10px;"><button onclick="onPrintPaper()">GENERATE REPORT-PDF</button>
+      </div>
+      
+      <div id="generateSoilReportAction" style="text-align: center;margin-top: 10px;"><button onclick="onPrintPaper()">GENERATE REPORT-PDF</button>
+      </div>
+
+      <div id="generateWaterReport">
+         <!-- Header-start -->
+         <div id="headerReport" style="border:solid 1px black;padding:10px;">
+
+            <div style="display: flex;justify-content: space-between;">
+               <div class="mt-2">
+                  <span><b>पावती क्र. : </b></span><span id="heading1-1"> -</span>
+               </div>
+               <div class="mt-2">
+                  <span class="mt-2"><b>दिनांक : </b></span><span id="heading1-2">--/--/--</span>
+               </div>
+            </div>
+            <div style="display: flex;justify-content: space-between;">
+               <div class="mt-2">
+                  <span><b>प्रयोगशाळा संदर्भ क्र. : </b></span><span id="heading1-3"> ----</span>
+               </div>
+               <div class="mt-2">
+                  <span><b>शेतक-याचे नाव : </b></span><span id="heading1-4">--- --- ---</span>
+               </div>
+            </div>
+
+            <div style="display: flex;justify-content: space-between;">
+               <div class="mt-2">
+                  <span><b>गाव : </b></span><span id="heading1-5">---</span>
+               </div>
+               <div class="mt-2">
+                  <span><b>तालुका : </b></span><span id="heading1-6">---</span>
+               </div>
+               <div class="mt-2">
+                  <span><b>जिल्हा : </b></span><span id="heading1-7">---</span>
+               </div>
+            </div>
+
+            <div style="display: flex;justify-content: space-between;">
+
+               <div class="mt-2">
+                  <span><b>सर्व्हे / गट क्रमांक : </b></span><span id="heading1-8">--/---</span>
+               </div>
+
+               <div class="mt-2">
+                  <span><b>नमुना श्रोत : </b></span><span id="heading1-10">---</span>
+               </div>
+
+            </div>
+
          </div>
+         <!-- Header-END -->
+
+         <table style="width:100%;border:1px solid black; text-align: center;">
+            <thead style="border:1px solid black;">
+               <tr style="border:1px solid black; height:50px;">
+                  <th style="border:1px solid black; width:18%;">
+                     पाण्यातील घटक
+                  </th>
+                  <th style="border:1px solid black;width:18%;">
+                     परिमाण
+                  </th>
+                  <th style="border:1px solid black;width:18%;">
+                     घटकाचे नमुन्यातील प्रमाण
+                  </th>
+                  <th style="border:1px solid black;width:30%;">
+                     घटकाचे सर्वसाधारण प्रमाण
+                  </th>
+
+               </tr>
+            </thead>
+            <tbody>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">सामू (ph)</td>
+                  <td style="border:1px solid black;"><span id="P1-1"></span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-1"></span></td>
+                  <td style="border:1px solid black;"> ६.५० ते ८.५०</td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">विद्युत वाहकता / क्षारता ( EC )</td>
+                  <td style="border:1px solid black;"><span id="P1-2">डेसि/मि</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-2">--</span></td>
+                  <td style="border:1px solid black;"> ०.०० ते ०.५०</td>
+               </tr>
+               <tr style="height:35px;">
+                  <td> <b>
+                        कॅटायन्स </td>
+                  </b>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">कॅल्शियम ( Ca )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-3">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-3">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते १.५०</td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">मग्नेशीयम ( Mg )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-4">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-4">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते ५.००</td>
+               </tr>
+
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">सोडियम ( Na )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-5">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-5">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते ४.००</td>
+               </tr>
+
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">पोटॅशियम ( K )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-6">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-6">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते १.००</td>
+               </tr>
+               <tr style="height:35px;">
+                  <td>
+                     <b>अँनियन्स</b>
+                  </td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">कार्बोनेट्स ( Co3 )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-7">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-7">--</span></td>
+                  <td style="border:1px solid black;">
+                     ०.०० ते १.५०
+                  </td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">बायकार्बोनेट्स ( HCo3 )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-8">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-8">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते १.५०</td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">क्लोराईटस ( Cl )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-9">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-9">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते २.००</td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">सल्फेट ( So4 )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-10">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-10">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते २.००</td>
+               </tr>
+               <tr style="height:35px;">
+                  <td></td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">सोडियम शोषण गुणांक ( SAR )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-11">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-11">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते १०</td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">अवशेषात्मक सोडियम कार्बोनेट ( RSC )
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-12">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-12">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते १.२५</td>
+               </tr>
+               <tr style="border:1px solid black; height:35px;">
+                  <td style="border:1px solid black;">कॅल्शियम ते मग्नेशियम गुणांक (Ca:Mg)
+                  </td>
+                  <td style="border:1px solid black;"><span id="P1-13">मि.इ./ लिटर</span></td>
+                  <td style="border:1px solid black;"><span id="GNP1-13">--</span></td>
+                  <td style="border:1px solid black;">०.०० ते १.५</td>
+               </tr>
+            </tbody>
+         </table>
+
+      </div>
+      <div id="generateWaterReportAction" style="text-align: center;margin-top: 10px;"><button onclick="onPrintPaperWater()">GENERATE WATER REPORT-PDF</button>
+
+
       </div>
 
 
@@ -928,7 +1197,10 @@ $listobj = new getList();
    $('#waterSrc').hide();
    $('#pick').show();
 
-   $('#generateReport').hide();
+   $('#generateSoilReport').hide();
+   $('#generateSoilReportAction').hide();
+   $('#generateWaterReport').hide();
+   $('#generateWaterReportAction').hide();
 
 
    $('#labAdd').hide();
@@ -1051,7 +1323,6 @@ $listobj = new getList();
 
 
       if ($('form  input[name=kk]:checked').val() === 'soil') {
-         alert("SOIL");
          if (document.getElementById("ii").value == "") {
             alert("Please Select ii");
             return false;
@@ -1063,7 +1334,6 @@ $listobj = new getList();
       }
       if ($('form  input[name=kk]:checked').val() === 'water') {
 
-         alert("WATER");
          if (document.getElementById("hh").value == "") {
             alert("Please Select hh");
             return false;
@@ -1100,20 +1370,28 @@ $listobj = new getList();
    }));
 
    function onPrint(printObj) {
-      $('#generateReport').show();
+      $('#generateSoilReport').show();
+      $('#generateSoilReportAction').show();
       $('#mlist').hide();
 
       setReportData(printObj);
    }
 
    function onPrintPaper() {
-      var printContents = document.getElementById('generateReport').innerHTML;
+      var printContents = document.getElementById('generateSoilReport').innerHTML;
       var originalContents = document.body.innerHTML;
       document.body.innerHTML = printContents;
       window.print();
       document.body.innerHTML = originalContents;
    }
 
+   function onPrintPaperWater(){
+      var printContents = document.getElementById('generateWaterReport').innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+   }
 
    function setReportData(headerId) {
       // actionNameN = "singlerecord";
@@ -1154,149 +1432,229 @@ $listobj = new getList();
          success: function (data) {
             let object = JSON.parse(data);
             console.log("OBJECT:", object);
-
-            $("#heading-1").text(object['aa']);
-            // Date
-            // $("#heading-2").text(object['cc']);    
-            $("#heading-3").text(object['bb']);
-            $("#heading-4").text(object['cc']);
-            $("#heading-5").text(object['ee']);
-            $("#heading-6").text(object['ff']);
-            $("#heading-7").text(object['gg']);
-
-
-            $("#heading-8").text(object['dd']);
-            $("#heading-9").text(object['ii']);
-            $("#heading-10").text(object['jj']);
-
-            //Set data
-            $("#P-1").text(object['mm']);
-            $("#GNP-1").text(object['nn']);
-
-            if (object['nn'] < 6) $("#SP-1").text("आम्लयुक्त");
-            if (object['nn'] >= 6.1 && object['nn'] <= 8.5) $("#SP-1").text("सर्वसाधारण");
-            if (object['nn'] >= 8.6 && object['nn'] <= 9.0) $("#SP-1").text("विम्ल होण्याच्या मार्गावर");
-            if (object['nn'] >= 9.1) $("#SP-1").text("विम्लयुक्त");
-
-            // ६.०० पेक्षा कमी आम्लयुक्त, ६.१ ते ८.५; सर्वसाधारण, ८.६ ते ९.०: विम्ल होण्याच्या मार्गावर, ९.१ पेक्षा जास्त : विम्लयुक्त
-
-            $("#P-2").text(object['oo']);
-            $("#GNP-2").text(object['pp']);
-
-            if (object['pp'] < 1) $("#SP-2").text("सर्वसाधारण");
-            if (object['pp'] >= 1.01 && object['pp'] <= 2) $("#SP-2").text("पिक उ.गवणीस नुकसानकारक");
-            if (object['pp'] >= 2.01 && object['pp'] <= 3) $("#SP-2").text("क्षार संवेदनक्षम पिकाच्या वाढीस नुकसानकारक");
-            if (object['pp'] > 3.00) $("#SP-2").text("पिकास वाढीस हानीकारक");
-            // १.०० पेक्षा कमी: सर्वसाधारण १.०१ ते २.००: पिक उ.गवणीस नुकसानकारक, २.०१ ते 3.०० : क्षार संवेदनक्षम पिकाच्या वाढीस नुकसानकारक, 3.०० पेक्षा जास्त : पिकास वाढीस हानीकारक.
+            if (object['kk'] == 'soil') {
+               $('#generateSoilReport').show();
+               $('#generateSoilReportAction').show();
+               $('#generateWaterReport').hide();
+               $('#generateSoilWaterReportAction').hide();           
+               $("#heading-1").text(object['aa']);
+               // Date
+               $("#heading-2").text(object['ll']);    
+               $("#heading-3").text(object['bb']);
+               $("#heading-4").text(object['cc']);
+               $("#heading-5").text(object['ee']);
+               $("#heading-6").text(object['ff']);
+               $("#heading-7").text(object['gg']);
 
 
-            $("#P-3").text(object['qq']);
-            $("#GNP-3").text(object['rr']);
+               $("#heading-8").text(object['dd']);
+               $("#heading-9").text(object['ii']);
+               $("#heading-10").text(object['jj']);
 
-            if (object['rr'] < 0.20) $("#SP-3").text("अत्यंत कमी");
-            if (object['rr'] >= 0.21 && object['rr'] <= 0.40) $("#SP-3").text("कमी");
-            if (object['rr'] >= 0.41 && object['rr'] <= 0.60) $("#SP-3").text("मध्यम");
-            if (object['rr'] >= 0.61 && object['rr'] <= 0.80) $("#SP-3").text("थोडे जास्त");
-            if (object['rr'] >= 0.81 && object['rr'] <= 1.00) $("#SP-3").text("जास्त");
-            if (object['rr'] > 1) $("#SP-3").text("अत्यंत जास्त");
+               //Set data
+               $("#P-1").text(object['mm']);
+               $("#GNP-1").text(object['nn']);
 
-            // ०.२० पेक्षा कमी : अत्यंत कमी, 
-            // ०.२१ ते ०.४० : कमी, 
-            // ०.४१ ते ०.६० : मध्यम, 
-            // ०.६१ ते ०.८० : थोडे जास्त, 
-            // ०.८१ ते १.०० : जास्त, 
-            // १.०० पेक्षा जास्त : अत्यंत जास्त
+               if (object['nn'] < 6) $("#SP-1").text("आम्लयुक्त");
+               if (object['nn'] >= 6.1 && object['nn'] <= 8.5) $("#SP-1").text("सर्वसाधारण");
+               if (object['nn'] >= 8.6 && object['nn'] <= 9.0) $("#SP-1").text("विम्ल होण्याच्या मार्गावर");
+               if (object['nn'] >= 9.1) $("#SP-1").text("विम्लयुक्त");
 
-            $("#P-4").text(object['ss']);
-            $("#GNP-4").text(object['tt']);
+               // ६.०० पेक्षा कमी आम्लयुक्त, ६.१ ते ८.५; सर्वसाधारण, ८.६ ते ९.०: विम्ल होण्याच्या मार्गावर, ९.१ पेक्षा जास्त : विम्लयुक्त
 
-            if (object['tt'] < 0.50) $("#SP-4").text("अत्यंत कमी");
-            if (object['tt'] >= 0.51 && object['tt'] <= 2.50) $("#SP-4").text("कमी");
-            if (object['tt'] >= 2.51 && object['tt'] <= 5.00) $("#SP-4").text("मध्यम");
-            if (object['tt'] >= 5.01 && object['tt'] <= 10.00) $("#SP-4").text("थोडे जास्त");
-            if (object['tt'] >= 10.01) $("#SP-4").text("अत्यंत जास्त / पिकास हानीकारक");
+               $("#P-2").text(object['oo']);
+               $("#GNP-2").text(object['pp']);
 
-            // ०.५० पेक्षा कमी: अत्यंत कमी,
-            //  ०.५१ ते २.५० : कमी,
-            //   २.५१ ते ५.०० : मध्यम,
-            //    ५.०१ ते १०.०० : थोडे जास्त, 
-            //    १०.०१ ते च्या पुढे: अत्यंत जास्त / पिकास हानीकारक.
+               if (object['pp'] < 1) $("#SP-2").text("सर्वसाधारण");
+               if (object['pp'] >= 1.01 && object['pp'] <= 2) $("#SP-2").text("पिक उ.गवणीस नुकसानकारक");
+               if (object['pp'] >= 2.01 && object['pp'] <= 3) $("#SP-2").text("क्षार संवेदनक्षम पिकाच्या वाढीस नुकसानकारक");
+               if (object['pp'] > 3.00) $("#SP-2").text("पिकास वाढीस हानीकारक");
+               // १.०० पेक्षा कमी: सर्वसाधारण १.०१ ते २.००: पिक उ.गवणीस नुकसानकारक, २.०१ ते 3.०० : क्षार संवेदनक्षम पिकाच्या वाढीस नुकसानकारक, 3.०० पेक्षा जास्त : पिकास वाढीस हानीकारक.
 
 
-            $("#P-5").text(object['uu']);
-            $("#GNP-5").text(object['vv']);
-          
-            if (object['vv'] < 140) $("#SP-5").text("अत्यंत कमी");
-            if (object['vv'] >= 141 && object['vv'] <= 280) $("#SP-5").text("कमी");
-            if (object['vv'] >= 281 && object['vv'] <= 420) $("#SP-5").text("मध्यम");
-            if (object['vv'] >= 421 && object['vv'] <= 560) $("#SP-5").text("थोडे जास्त");
-            if (object['vv'] >= 561 && object['vv'] <= 700) $("#SP-5").text("जास्त");
-            if (object['vv'] > 700) $("#SP-5").text("अत्यंत");
+               $("#P-3").text(object['qq']);
+               $("#GNP-3").text(object['rr']);
 
-            // १४० पेक्षा कमी : अत्यंत कमी,
-            //  १४१ ते २८० : कमी,
-            //  २८१-४२० : मध्यम,
-            //   ४२१-५६० : थोडे जास्त, 
-            //   ५६१-७०० : जास्त, 
-            //   ७०० पेक्षा जास्त : अत्यंत .
+               if (object['rr'] < 0.20) $("#SP-3").text("अत्यंत कमी");
+               if (object['rr'] >= 0.21 && object['rr'] <= 0.40) $("#SP-3").text("कमी");
+               if (object['rr'] >= 0.41 && object['rr'] <= 0.60) $("#SP-3").text("मध्यम");
+               if (object['rr'] >= 0.61 && object['rr'] <= 0.80) $("#SP-3").text("थोडे जास्त");
+               if (object['rr'] >= 0.81 && object['rr'] <= 1.00) $("#SP-3").text("जास्त");
+               if (object['rr'] > 1) $("#SP-3").text("अत्यंत जास्त");
 
-            $("#P-6").text(object['ww']);
-            $("#GNP-6").text(object['xx']);
- 
-            if (object['xx'] < 7) $("#SP-6").text("अत्यंत कमी");
-            if (object['xx'] >= 8 && object['xx'] <= 14) $("#SP-6").text("कमी कमी");
-            if (object['xx'] >= 15 && object['xx'] <= 21) $("#SP-6").text("मध्यम");
-            if (object['xx'] >= 22 && object['xx'] <= 28) $("#SP-6").text("थोडे जास्त");
-            if (object['xx'] >= 29 && object['xx'] <= 35) $("#SP-6").text("जास्त");
-            if (object['xx'] > 35) $("#SP-6").text("अत्यंत जास्त");
+               // ०.२० पेक्षा कमी : अत्यंत कमी, 
+               // ०.२१ ते ०.४० : कमी, 
+               // ०.४१ ते ०.६० : मध्यम, 
+               // ०.६१ ते ०.८० : थोडे जास्त, 
+               // ०.८१ ते १.०० : जास्त, 
+               // १.०० पेक्षा जास्त : अत्यंत जास्त
 
-            // ७ पेक्षा कमी : अत्यंत कमी, 
-            // ८ ते 14 : कमी कमी, 
-            // १५ ते २१ : मध्यम, 
-            // २२-२८ : थोडे जास्त, 
-            // २९ ते ३५ : जास्त, 
-            // ३५ पेक्षा जास्त : अत्यंत जास्त 
+               $("#P-4").text(object['ss']);
+               $("#GNP-4").text(object['tt']);
 
-            $("#P-7").text(object['yy']);
-            $("#GNP-7").text(object['zz']);
-            // $("#SP-1").text();
+               if (object['tt'] < 0.50) $("#SP-4").text("अत्यंत कमी");
+               if (object['tt'] >= 0.51 && object['tt'] <= 2.50) $("#SP-4").text("कमी");
+               if (object['tt'] >= 2.51 && object['tt'] <= 5.00) $("#SP-4").text("मध्यम");
+               if (object['tt'] >= 5.01 && object['tt'] <= 10.00) $("#SP-4").text("थोडे जास्त");
+               if (object['tt'] >= 10.01) $("#SP-4").text("अत्यंत जास्त / पिकास हानीकारक");
 
-            if (object['zz'] < 100) $("#SP-7").text("अत्यंत कमी");
-            if (object['zz'] >= 101 && object['zz'] <= 150) $("#SP-7").text("कमी कमी");
-            if (object['zz'] >= 151 && object['zz'] <= 200) $("#SP-7").text("मध्यम");
-            if (object['zz'] >= 201 && object['zz'] <= 250) $("#SP-7").text("थोडे जास्त");
-            if (object['zz'] >= 251 && object['zz'] <= 300) $("#SP-7").text("जास्त");
-            if (object['zz'] > 300) $("#SP-7").text("अत्यंत जास्त");
+               // ०.५० पेक्षा कमी: अत्यंत कमी,
+               //  ०.५१ ते २.५० : कमी,
+               //   २.५१ ते ५.०० : मध्यम,
+               //    ५.०१ ते १०.०० : थोडे जास्त, 
+               //    १०.०१ ते च्या पुढे: अत्यंत जास्त / पिकास हानीकारक.
 
-            // १०० पेक्षा कमी : अत्यंत कमी, 
-            // १०१ ते १५० : कमी, 
-            // १५१ ते २००: मध्यम, 
-            // २०१ ते २५० : थोडे जास्त,
-            // २५१ ते ३०० : जास्त, 
-            // ३०० पेक्षा जास्त : अत्यंत जास्त
 
-            $("#P-8").text(object['aaa']);
-            $("#GNP-8").text(object['bbb']);
-         
-            if (object['bbb'] < 4.50) $("#SP-8").text("कमी");
-            if (object['bbb'] == 6.60 ) $("#SP-8").text("योग्य प्रमाणात");
-            if (object['bbb'] >= 4.50 && object['bbb'] <= 10.00) $("#SP-8").text("योग्य प्रमाणात");
-            if (object['bbb'] > 10) $("#SP-8").text("आवश्यकतेपेक्षा जास्त");
+               $("#P-5").text(object['uu']);
+               $("#GNP-5").text(object['vv']);
 
-            // उपलब्ध लोह Available Iron (Fe) पी.पी.एम. 
-            // ६.६० योग्य प्रमाणात 
-            // ४.५० पेक्षा कमी : कमी, 
-            // ४.५० ते १०.०० : योग्य प्रमाणात,
-            // १०.०० पेक्षा जास्त : आवश्यकतेपेक्षा जास्त.
+               if (object['vv'] < 140) $("#SP-5").text("अत्यंत कमी");
+               if (object['vv'] >= 141 && object['vv'] <= 280) $("#SP-5").text("कमी");
+               if (object['vv'] >= 281 && object['vv'] <= 420) $("#SP-5").text("मध्यम");
+               if (object['vv'] >= 421 && object['vv'] <= 560) $("#SP-5").text("थोडे जास्त");
+               if (object['vv'] >= 561 && object['vv'] <= 700) $("#SP-5").text("जास्त");
+               if (object['vv'] > 700) $("#SP-5").text("अत्यंत");
 
-            $("#P-9").text(object['ccc']);
-            $("#GNP-9").text(object['ddd']);
-            // $("#SP-1").text();
+               // १४० पेक्षा कमी : अत्यंत कमी,
+               //  १४१ ते २८० : कमी,
+               //  २८१-४२० : मध्यम,
+               //   ४२१-५६० : थोडे जास्त, 
+               //   ५६१-७०० : जास्त, 
+               //   ७०० पेक्षा जास्त : अत्यंत .
 
-            $("#P-10").text(object['eee']);
-            $("#GNP-10").text(object['fff']);
-            // $("#SP-1").text();
+               $("#P-6").text(object['ww']);
+               $("#GNP-6").text(object['xx']);
 
+               if (object['xx'] < 7) $("#SP-6").text("अत्यंत कमी");
+               if (object['xx'] >= 8 && object['xx'] <= 14) $("#SP-6").text("कमी कमी");
+               if (object['xx'] >= 15 && object['xx'] <= 21) $("#SP-6").text("मध्यम");
+               if (object['xx'] >= 22 && object['xx'] <= 28) $("#SP-6").text("थोडे जास्त");
+               if (object['xx'] >= 29 && object['xx'] <= 35) $("#SP-6").text("जास्त");
+               if (object['xx'] > 35) $("#SP-6").text("अत्यंत जास्त");
+
+               // ७ पेक्षा कमी : अत्यंत कमी, 
+               // ८ ते 14 : कमी कमी, 
+               // १५ ते २१ : मध्यम, 
+               // २२-२८ : थोडे जास्त, 
+               // २९ ते ३५ : जास्त, 
+               // ३५ पेक्षा जास्त : अत्यंत जास्त 
+
+               $("#P-7").text(object['yy']);
+               $("#GNP-7").text(object['zz']);
+               // $("#SP-1").text();
+
+               if (object['zz'] < 100) $("#SP-7").text("अत्यंत कमी");
+               if (object['zz'] >= 101 && object['zz'] <= 150) $("#SP-7").text("कमी कमी");
+               if (object['zz'] >= 151 && object['zz'] <= 200) $("#SP-7").text("मध्यम");
+               if (object['zz'] >= 201 && object['zz'] <= 250) $("#SP-7").text("थोडे जास्त");
+               if (object['zz'] >= 251 && object['zz'] <= 300) $("#SP-7").text("जास्त");
+               if (object['zz'] > 300) $("#SP-7").text("अत्यंत जास्त");
+
+               // १०० पेक्षा कमी : अत्यंत कमी, 
+               // १०१ ते १५० : कमी, 
+               // १५१ ते २००: मध्यम, 
+               // २०१ ते २५० : थोडे जास्त,
+               // २५१ ते ३०० : जास्त, 
+               // ३०० पेक्षा जास्त : अत्यंत जास्त
+
+               $("#P-8").text(object['aaa']);
+               $("#GNP-8").text(object['bbb']);
+
+               if (object['bbb'] < 4.50) $("#SP-8").text("कमी");
+               if (object['bbb'] == 6.60) $("#SP-8").text("योग्य प्रमाणात");
+               if (object['bbb'] >= 4.50 && object['bbb'] <= 10.00) $("#SP-8").text("योग्य प्रमाणात");
+               if (object['bbb'] > 10) $("#SP-8").text("आवश्यकतेपेक्षा जास्त");
+
+               // उपलब्ध लोह Available Iron (Fe) पी.पी.एम. 
+               // ६.६० योग्य प्रमाणात 
+               // ४.५० पेक्षा कमी : कमी, 
+               // ४.५० ते १०.०० : योग्य प्रमाणात,
+               // १०.०० पेक्षा जास्त : आवश्यकतेपेक्षा जास्त.
+
+               $("#P-9").text(object['ccc']);
+               $("#GNP-9").text(object['ddd']);
+               if (object['ddd'] < 0.60) $("#SP-9").text("कमी");
+               if (object['ddd'] >= 0.61 && object['ddd'] <= 1.00) $("#SP-9").text("योग्य प्रमाणात");
+               if (object['ddd'] > 1.10) $("#SP-9").text("भरपूर");
+               // ०.६० पेक्षा कमी : कमी, ०.६१ ते १.०० : योग्य प्रमाणात, १.१० पेक्षा जास्त : भरपूर.
+
+               $("#P-10").text(object['eee']);
+               $("#GNP-10").text(object['fff']);
+               if (object['fff'] < 0.20) $("#SP-10").text("कमी");
+               if (object['fff'] >= 0.20 && object['fff'] <= 0.50) $("#SP-10").text("मध्यम");
+               if (object['fff'] >= 0.51 && object['fff'] <= 10.00) $("#SP-10").text("आवश्यकतेपेक्षा जास्त");
+               if (object['fff'] > 10.00) $("#SP-10").text("भरपूर");
+               // ०.२० पेक्षा कमी : कमी, 
+               // ०.२० ते ०.५० : मध्यम, 
+               // ०.५१ ते १०.०० : आवश्यकतेपेक्षा जास्त, 
+               // १०.०० पेक्षा जास्त : भरपूर.
+
+
+               $("#P-11").text(object['ggg']);
+               $("#GNP-11").text(object['hhh']);
+
+               if (object['hhh'] < 2.00) $("#SP-11").text("कमी");
+               if (object['hhh'] >= 2.00 && object['hhh'] <= 5.00) $("#SP-11").text("योग्य प्रमाणात");
+               if (object['hhh'] >= 5.01 && object['hhh'] <= 50.00) $("#SP-11").text("आवश्यकतेपेक्षा जास्त");
+               if (object['hhh'] > 50.00) $("#SP-11").text("भरपूर");
+               //२.०० पेक्षा कमी : कमी, 
+               //२.०० ते ५.०० : योग्य प्रमाणात,
+               //५.०१ ते ५०.०० : आवश्यकतेपेक्षा जास्त, 
+               //५०.०० पेक्षा जास्त : भरपूर
+
+            } //Soil Report end
+
+            if (object['kk'] == 'water') {
+               $('#generateWaterReport').show();
+               $('#generateWaterReportAction').show();
+               $('#generateSoilReport').hide();
+               $('#generateSoilReportAction').hide();
+               $("#heading1-1").text(object['aa']);
+               // Date
+               $("#heading1-2").text(object['ll']);    
+               $("#heading1-3").text(object['bb']);
+               $("#heading1-4").text(object['cc']);
+               $("#heading1-5").text(object['ee']);
+               $("#heading1-6").text(object['ff']);
+               $("#heading1-7").text(object['gg']);
+
+
+               $("#heading1-8").text(object['dd']);
+               $("#heading1-9").text(object['ii']);
+               $("#heading1-10").text(object['hh']);
+
+               $("#P1-1").text(object['iii']);
+               $("#GNP1-1").text(object['jjj']);
+               $("#P1-2").text(object['kkk']);
+               $("#GNP1-2").text(object['lll']);
+
+               $("#P-3").text(object['mmm']);
+               $("#GNP1-3").text(object['nnn']);
+               $("#P1-4").text(object['ooo']);
+               $("#GNP1-4").text(object['ppp']);
+
+               $("#P1-5").text(object['qqq']);
+               $("#GNP1-5").text(object['rrr']);
+               $("#P1-6").text(object['sss']);
+               $("#GNP1-6").text(object['ttt']);
+
+               $("#P-7").text(object['uuu']);
+               $("#GNP1-7").text(object['vvv']);
+               $("#P1-8").text(object['www']);
+               $("#GNP1-8").text(object['xxx']);
+
+               $("#P1-9").text(object['yyy']);
+               $("#GNP1-9").text(object['zzz']);
+               $("#P1-10").text(object['aaaa']);
+               $("#GNP1-10").text(object['bbbb']);
+
+               $("#P-11").text(object['cccc']);
+               $("#GNP1-11").text(object['dddd']);
+               $("#P1-12").text(object['eeee']);
+               $("#GNP1-12").text(object['ffff']);
+               $("#P1-13").text(object['gggg']);
+               $("#GNP1-13").text(object['hhhh']);
+            }
 
 
 

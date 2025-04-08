@@ -13,17 +13,17 @@
 // $password = "e.@Bl7Qc8moI";
 // $db = "thewelln_scheduling";
 
-$servername = "saarthakdeveloper.com";
-$username = "saarthak_dev";
-$password = "Abhi@7588555845";
-$db = "saarthak_temp";
+// $servername = "saarthakdeveloper.com";
+// $username = "saarthak_dev";
+// $password = "Abhi@7588555845";
+// $db = "saarthak_temp";
 
 //local
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $db = "dhidb";
+$servername = "127.0.0.1:4306";
+$username = "root";
+$password = "";
+$db = "auto";
 
    $conn = new mysqli($servername, $username, $password, $db);
    if ($conn->connect_error) {

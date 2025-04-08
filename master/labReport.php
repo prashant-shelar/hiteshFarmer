@@ -89,13 +89,13 @@ $listobj = new getList();
                            <label for="kk"> अहवाल </label>
                            <div class="form-group">
 
-                              <input type="radio" class="form-check-input"  name="kk" value="soil"
+                              <input type="radio" class="form-check-input" id="soil" name="kk" value="soil"
                                  onclick="setReport()" checked>
                               <label class="form-check-label mr-4" for="माती">
                                  मृदा विश्लेषण अहवाल
                               </label>
 
-                              <input type="radio" class="form-check-input" name="kk" value="water"
+                              <input type="radio" class="form-check-input" id="water"  name="kk" value="water"
                                  onclick="setReport()">
                               <label class="form-check-label" for="जल">
                                  जल विश्लेषण अहवाल
@@ -1665,6 +1665,33 @@ $listobj = new getList();
 
    }
 
+   function onEdit(obj) {
+      actionNameN = "singlerecord";
+      this.onSelect('edit');
+      $.ajax({
+         url: "../action/labAction.php",
+         type: "POST",
+         data: { table_name: tableName, key: obj, action: actionNameN, field: fieldName },
+         success: function (data) {
+
+            let object = JSON.parse(data);
+
+            for (x in JSON.parse(data)) {
+               if(x=="kk" && object[x]=='soil'){
+                  document.getElementById("abc").checked = true;
+                  setReport();
+               }
+               if(x=='kk' && object[x]=='water'){
+                  document.getElementById("water").checked = true;
+                  setReport();
+               }
+   
+               $("#" + x).val(object[x]);
+            }
+         }, error: function () {
+         }
+      });
+   }
 
 </script>
 <?php include ("../them/footer.php"); ?>
